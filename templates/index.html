@@ -1,3 +1,48 @@
-<!doctype html><meta charset="utf-8">
-<h1>Employee Management</h1>
-<p>Hello World 页面测试成功！</p>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Employee Management</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background: #f4f4f4; text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>Employees</h1>
+
+  {% if employees %}
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th><th>Name</th><th>Age</th><th>City</th><th>Portfolio</th><th>Account</th><th>Created</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for e in employees %}
+        <tr>
+          <td>{{ e.emp_id }}</td>
+          <td>{{ e.name }}</td>
+          <td>{{ e.age }}</td>
+          <td>{{ e.city }}</td>
+          <td>
+            {% if e.portfolio_link %}
+              <a href="{{ e.portfolio_link }}" target="_blank">link</a>
+            {% else %}-{% endif %}
+          </td>
+          <td>{{ e.account }}</td>
+          <td>{{ e.created_at }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No employees yet. Try inserting one record in MySQL.</p>
+  {% endif %}
+
+  <p>
+    Debug JSON: <a href="/api/employees" target="_blank">/api/employees</a>
+  </p>
+</body>
+</html>

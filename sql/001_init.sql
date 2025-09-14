@@ -1,0 +1,14 @@
+-- 创建员工表
+CREATE TABLE IF NOT EXISTS employee (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    age INT NOT NULL,
+    department VARCHAR(100) NOT NULL
+);
+
+-- 创建管理员表
+CREATE TABLE IF NOT EXISTS admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL
+);

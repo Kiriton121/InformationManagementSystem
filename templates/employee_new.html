@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>新增员工</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 40px; }
+    label { display:block; margin: 12px 0 6px; color:#374151; }
+    input { width: 320px; max-width: 100%; padding:10px 12px; border:1px solid #e5e7eb; border-radius:8px; }
+    button { margin-top: 16px; padding:10px 14px; background:#10b981; color:#fff; border:0; border-radius:8px; cursor:pointer; }
+    button:hover { filter:brightness(0.95); }
+    a { color:#1f6feb; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <h1>新增员工</h1>
+  <p><a href="/">← 返回列表</a></p>
+
+  <form action="/employees/create" method="post">
+    <label for="name">姓名</label>
+    <input id="name" name="name" required placeholder="如：Alice" />
+
+    <label for="age">年龄</label>
+    <input id="age" name="age" type="number" required placeholder="如：28" />
+
+    <label for="department">部门</label>
+    <input id="department" name="department" required placeholder="如：HR / Engineering / Finance" />
+
+    <button type="submit">提交</button>
+  </form>
+</body>
+</html>

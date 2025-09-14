@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>Employees</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 40px; }
+    a { text-decoration: none; color: #1f6feb; }
+    .actions { margin: 16px 0; }
+    table { border-collapse: collapse; width: 720px; max-width: 100%; }
+    th, td { border: 1px solid #e5e7eb; padding: 10px 12px; text-align: left; }
+    th { background: #f8fafc; }
+    .muted { color: #6b7280; }
+    form { display:inline; }
+    button { background:#ef4444; color:#fff; border:0; padding:6px 10px; border-radius:6px; cursor:pointer; }
+    button:hover { filter:brightness(0.95); }
+  </style>
+</head>
+<body>
+  <h1>Employees</h1>
+
+  <div class="actions">
+    <a href="/employees/new">➕ 新增员工</a>
+    &nbsp; | &nbsp;
+    <a href="/api/employees" target="_blank">Debug JSON</a>
+  </div>
+
+  {% if employees %}
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>部门</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for e in employees %}
+        <tr>
+          <td>{{ e.id }}</td>
+          <td>{{ e.name }}</td>
+          <td>{{ e.age }}</td>
+          <td>{{ e.department }}</td>
+          <td>
+            <form action="/employees/{{ e.id }}/delete" method="post" onsubmit="return confirm('确定删除该员工？');">
+              <button type="submit">删除</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="muted">No employees yet. Try inserting one record in MySQL.</p>
+  {% endif %}
+</body>
+</html>
