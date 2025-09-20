@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><title>管理员登录</title></head>
+<body>
+  <h1>管理员登录</h1>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul>
+        {% for cat, msg in messages %}
+          <li>[{{ cat }}] {{ msg }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <form method="post" action="{{ url_for('login') }}">
+    <div>
+      <label>账号</label>
+      <input name="username" autocomplete="username">
+    </div>
+    <div>
+      <label>密码</label>
+      <input name="password" type="password" autocomplete="current-password">
+    </div>
+    <button type="submit">登录</button>
+  </form>
+
+  <p><a href="{{ url_for('index') }}">返回首页</a></p>
+</body>
+</html>

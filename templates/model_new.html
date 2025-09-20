@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <title>模特信息录入</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body class="p-4">
+  <div class="container" style="max-width:560px">
+    <h3 class="mb-3">模特信息录入</h3>
+
+    {% with msgs = get_flashed_messages() %}
+      {% if msgs %}
+        <div class="alert alert-info">{{ msgs|join('，') }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post">
+      <div class="mb-3">
+        <label class="form-label">姓名</label>
+        <input class="form-control" name="name" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">年龄</label>
+        <input class="form-control" name="age" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">手机号</label>
+        <input class="form-control" name="phone" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">意向部门</label>
+        <input class="form-control" name="department" placeholder="如：HR / Engineering / Finance" required>
+      </div>
+      <button class="btn btn-success">提交</button>
+      <a href="{{ url_for('list_employees') }}" class="btn btn-link">返回</a>
+    </form>
+  </div>
+</body>
+</html>
